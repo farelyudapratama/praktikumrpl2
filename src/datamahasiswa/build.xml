@@ -1,0 +1,42 @@
+<project name="DataMahasiswa" default="compile">
+    <!-- Define the classpath for all required libraries -->
+    <path id="project.classpath">
+        <fileset dir="lib">
+            <include name="hibernate-core-5.4.33.Final.jar"/>
+            <include name="hibernate-commons-annotations-5.1.2.Final.jar"/>
+            
+            <include name="jaxb-api-2.3.1.jar"/>
+            <include name="jaxb-runtime-2.3.1.jar"/>
+            <include name="jaxb-core-2.3.0.1.jar"/>
+            <include name="istack-commons-runtime-3.0.7.jar"/>
+            
+            <include name="javax.activation-api-1.2.0.jar"/>
+            
+            <include name="mysql-connector-java-8.0.17.jar"/>
+            
+            <include name="byte-buddy-1.10.22.jar"/>
+            <include name="classmate-1.5.1.jar"/>
+            <include name="dom4j-2.1.3.jar"/>
+            <include name="javassist-3.27.0-GA.jar"/>
+            <include name="javax.persistence-api-2.2.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="build/classes"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="src" 
+               destdir="build/classes" 
+               classpathref="project.classpath"
+               includeantruntime="false"
+               debug="true"
+               encoding="UTF-8">
+        </javac>
+    </target>
+</project>
